@@ -16,6 +16,9 @@
   "resources" : [ ],
   "source-url" : "git://github.com/astj/p6-Crust-Middleware-Promise-Wrapper.git",
   "tags" : [ ],
-  "test-depends" : [ ],
+  "test-depends" : [
+    "Crust::Builder",
+    "HTTP::Message::PSGI"
+  ],
   "version" : "0.0.1"
 }
