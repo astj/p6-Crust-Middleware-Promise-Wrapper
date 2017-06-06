@@ -1,17 +1,19 @@
+[![Build Status](https://travis-ci.org/astj/p6-Crust-Middleware-Promise-Wrapper.svg?branch=master)](https://travis-ci.org/astj/p6-Crust-Middleware-Promise-Wrapper)
+
 NAME
 ====
 
-Crust::Middleware::Promise::Wrapper - blah blah blah
+Crust::Middleware::PromiseWrapper - An wrapper middleware for legay PSGI apps
 
 SYNOPSIS
 ========
 
-    use Crust::Middleware::Promise::Wrapper;
+    use Crust::Middleware::PromiseWrapper;
 
 DESCRIPTION
 ===========
 
-Crust::Middleware::Promise::Wrapper is ...
+Crust::Middleware::PromiseWrapper is a simple wrapper middleware for legacy PSGI apps.
 
 AUTHOR
 ======
