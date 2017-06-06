@@ -4,7 +4,7 @@
   ],
   "build-depends" : [ ],
   "depends" : [
-    "Crust::Middleware"
+    "Crust"
   ],
   "description" : "An wrapper middleware for legay PSGI apps",
   "license" : "Artistic-2.0",
@@ -16,9 +16,6 @@
   "resources" : [ ],
   "source-url" : "git://github.com/astj/p6-Crust-Middleware-Promise-Wrapper.git",
   "tags" : [ ],
-  "test-depends" : [
-    "Crust::Builder",
-    "HTTP::Message::PSGI"
-  ],
+  "test-depends" : [ ],
   "version" : "0.0.1"
 }
