@@ -4,11 +4,9 @@ use Crust::Middleware;
 unit class Crust::Middleware::PromiseWrapper:ver<0.0.1> is Crust::Middleware;
 
 method CALL-ME(%env) {
-    my $res = $.app()(%env);
-
-    given $res {
-        when Promise { return $res; }
-        default { start { $res; }; }
+    given $.app()(%env) {
+        when Promise { $_; }
+        default { start { $_ }; }
     }
 }
 
