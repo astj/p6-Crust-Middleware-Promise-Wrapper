@@ -34,7 +34,7 @@ Crust::Middleware::PromiseWrapper is a simple wrapper middleware for legacy PSGI
 L<P6W> (formally known as PSGI) Version 0.7.Draft expects P6W apps to implement "request-response" protocol.
 Under the protocol, P6W apps must return a Promise which is kept with a Capture with 3-elements response.
 
-This middleware enables "legacy" PSGI applications which directly returns Capture (that means the application can respond to psgi protocol only) to work with "request-response" protocol.
+This middleware enables "legacy" PSGI applications which directly returns Capture (that means the application can respond to only psgi protocol) to work with "request-response" protocol.
 
 =head1 AUTHOR
 
