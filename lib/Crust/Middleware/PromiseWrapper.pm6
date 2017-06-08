@@ -4,6 +4,10 @@ use Crust::Middleware;
 unit class Crust::Middleware::PromiseWrapper:ver<0.0.1> is Crust::Middleware;
 
 method CALL-ME(%env) {
+    # Tell server to this (wrapped) app uses request-response protocol
+    %env<p6w.protocol.enabled> = %env<p6w.protocol.support> ∩ set('request-response');
+
+    # XXX should I check p6w.protocol is set to request-response?
     given $.app()(%env) {
         when Promise { $_; }
         default { start { $_ }; }
