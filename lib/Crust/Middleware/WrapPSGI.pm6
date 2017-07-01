@@ -3,9 +3,20 @@ use Crust::Middleware;
 
 unit class Crust::Middleware::WrapPSGI:ver<0.0.1> is Crust::Middleware;
 
+my class IOlike::PrintSupplier {
+    has Supplier $.supplier;
+
+    # Many methods are missing...
+    method print(**@text --> True) {
+        $!supplier.emit(@text);
+    }
+}
+
 method CALL-ME(%env) {
     # Tell server to this (wrapped) app uses request-response protocol
     %env<p6w.protocol.enabled> = %env<p6w.protocol.support> ∩ set('request-response');
+    # Replace p6w.errors so that legacy apps can emit errors by %env<p6w.errors>.print
+    temp %env<p6w.errors> = IOlike::PrintSupplier.new(:supplier(%env<p6w.errors>));
 
     # XXX should I check p6w.protocol is set to request-response?
     given $.app()(%env) {
