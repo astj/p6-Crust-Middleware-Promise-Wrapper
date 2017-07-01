@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/astj/p6-Crust-Middleware-Promise-Wrapper.svg?branch=master)](https://travis-ci.org/astj/p6-Crust-Middleware-Promise-Wrapper)
+[![Build Status](https://travis-ci.org/astj/p6-Crust-Middleware-WrapPSGI.svg?branch=master)](https://travis-ci.org/astj/p6-Crust-Middleware-WrapPSGI)
 
 NAME
 ====
 
-Crust::Middleware::PromiseWrapper - An wrapper middleware for legay PSGI apps
+Crust::Middleware::WrapPSGI - An wrapper middleware for legay PSGI apps
 
 SYNOPSIS
 ========
@@ -14,14 +14,14 @@ SYNOPSIS
     };
     my $wrapped-app = builder {
         # You can add other middlewares which expects Promise as response here.
-        enable "PromiseWrapper";
+        enable "WrapPSGI";
         $psgi-app;
     };
 
 DESCRIPTION
 ===========
 
-Crust::Middleware::PromiseWrapper is a simple wrapper middleware for legacy PSGI applications. [P6W](P6W) (formally known as PSGI) Version 0.7.Draft expects P6W apps to implement "request-response" protocol. Under the protocol, P6W apps must return a Promise which is kept with a Capture with 3-elements response.
+Crust::Middleware::WrapPSGI is a simple wrapper middleware for legacy PSGI applications. [P6W](P6W) (formally known as PSGI) Version 0.7.Draft expects P6W apps to implement "request-response" protocol. Under the protocol, P6W apps must return a Promise which is kept with a Capture with 3-elements response.
 
 This middleware enables "legacy" PSGI applications which directly returns Capture (that means the application can respond to only psgi protocol) to work with "request-response" protocol.
 

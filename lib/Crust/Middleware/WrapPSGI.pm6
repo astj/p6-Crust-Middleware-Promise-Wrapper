@@ -1,7 +1,7 @@
 use v6.c;
 use Crust::Middleware;
 
-unit class Crust::Middleware::PromiseWrapper:ver<0.0.1> is Crust::Middleware;
+unit class Crust::Middleware::WrapPSGI:ver<0.0.1> is Crust::Middleware;
 
 method CALL-ME(%env) {
     # Tell server to this (wrapped) app uses request-response protocol
@@ -18,7 +18,7 @@ method CALL-ME(%env) {
 
 =head1 NAME
 
-Crust::Middleware::PromiseWrapper - An wrapper middleware for legay PSGI apps
+Crust::Middleware::WrapPSGI - An wrapper middleware for legay PSGI apps
 
 =head1 SYNOPSIS
 
@@ -28,13 +28,13 @@ Crust::Middleware::PromiseWrapper - An wrapper middleware for legay PSGI apps
   };
   my $wrapped-app = builder {
       # You can add other middlewares which expects Promise as response here.
-      enable "PromiseWrapper";
+      enable "WrapPSGI";
       $psgi-app;
   };
 
 =head1 DESCRIPTION
 
-Crust::Middleware::PromiseWrapper is a simple wrapper middleware for legacy PSGI applications.
+Crust::Middleware::WrapPSGI is a simple wrapper middleware for legacy PSGI applications.
 L<P6W> (formally known as PSGI) Version 0.7.Draft expects P6W apps to implement "request-response" protocol.
 Under the protocol, P6W apps must return a Promise which is kept with a Capture with 3-elements response.
 

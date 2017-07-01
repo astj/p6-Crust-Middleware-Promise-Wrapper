@@ -2,7 +2,7 @@ use v6.c;
 use Test;
 use Crust::Builder;
 use HTTP::Message::PSGI;
-use Crust::Middleware::PromiseWrapper;
+use Crust::Middleware::WrapPSGI;
 
 my $req = HTTP::Request.new(GET => "http://localhost/hello").to-psgi;
 
@@ -18,7 +18,7 @@ subtest {
 
 subtest {
     my $wrapped-psgi = builder {
-        enable "PromiseWrapper";
+        enable "WrapPSGI";
         $psgi-app;
     };
     my $res = $wrapped-psgi($req);
@@ -38,7 +38,7 @@ subtest {
 
 subtest {
     my $wrapped-psgi = builder {
-        enable "PromiseWrapper";
+        enable "WrapPSGI";
         $request-response-app;
     };
     my $res = $wrapped-psgi($req);
