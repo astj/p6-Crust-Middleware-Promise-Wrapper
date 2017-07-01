@@ -10,6 +10,7 @@ subtest {
         enable "WrapPSGI";
         -> %env {
             %env<p6w.errors>.print("ohno");
+            %env<p6sgi.errors>.print("legacy");
             (200, [ 'Content-Type' => 'text/plain' ], [ 'Hello World' ]);
         };
     };
@@ -22,7 +23,7 @@ subtest {
     await $res;
 
     $io.seek(0);
-    is $io.slurp-rest, "ohno\n";
+    is $io.slurp-rest, "ohno\nlegacy\n";
 }, 'psgi';
 
 subtest {
@@ -31,6 +32,7 @@ subtest {
         -> %env {
             start {
                 %env<p6w.errors>.print("ohno");
+                %env<p6sgi.errors>.print("legacy");
                 (200, [ 'Content-Type' => 'text/plain' ], [ 'Hello World' ]);
             };
         };
@@ -44,7 +46,7 @@ subtest {
     await $res;
 
     $io.seek(0);
-    is $io.slurp-rest, "ohno\n";
+    is $io.slurp-rest, "ohno\nlegacy\n";
 }, 'print inside Promise';
 
 subtest {
@@ -52,6 +54,7 @@ subtest {
         enable "WrapPSGI";
         -> %env {
             %env<p6w.errors>.print("ohno");
+            %env<p6sgi.errors>.print("legacy");
             start {
                 (200, [ 'Content-Type' => 'text/plain' ], [ 'Hello World' ]);
             };
@@ -66,7 +69,7 @@ subtest {
     await $res;
 
     $io.seek(0);
-    is $io.slurp-rest, "ohno\n";
+    is $io.slurp-rest, "ohno\nlegacy\n";
 }, 'print outside Promise';
 
 done-testing;

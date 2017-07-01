@@ -17,6 +17,7 @@ method CALL-ME(%env) {
     %env<p6w.protocol.enabled> = %env<p6w.protocol.support> ∩ set('request-response');
     # Replace p6w.errors so that legacy apps can emit errors by %env<p6w.errors>.print
     temp %env<p6w.errors> = IOlike::PrintSupplier.new(:supplier(%env<p6w.errors>));
+    %env<p6sgi.errors> = %env<p6w.errors>;
 
     # XXX should I check p6w.protocol is set to request-response?
     given $.app()(%env) {
