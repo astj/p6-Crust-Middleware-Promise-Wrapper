@@ -15,6 +15,7 @@ SYNOPSIS
     my $wrapped-app = builder {
         # You can add other middlewares which expects Promise as response here.
         enable "WrapPSGI";
+        # And you can add other *legacy* middlewares which expects Capture as response here.
         $psgi-app;
     };
 
