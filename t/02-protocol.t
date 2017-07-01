@@ -1,7 +1,7 @@
 use v6.c;
 use Test;
 use Crust::Builder;
-use HTTP::Message::PSGI;
+use HTTP::Message::P6W;
 use Crust::Middleware::WrapPSGI;
 
 my $app = builder {
@@ -11,7 +11,7 @@ my $app = builder {
     };
 };
 
-my $req = HTTP::Request.new(GET => "http://localhost/hello").to-psgi;
+my $req = HTTP::Request.new(GET => "http://localhost/hello").to-p6w;
 
 subtest {
     $req<p6w.protocol.support> = <request-response>.SetHash;

@@ -1,10 +1,10 @@
 use v6.c;
 use Test;
 use Crust::Builder;
-use HTTP::Message::PSGI;
+use HTTP::Message::P6W;
 use Crust::Middleware::WrapPSGI;
 
-my $req = HTTP::Request.new(GET => "http://localhost/hello").to-psgi;
+my $req = HTTP::Request.new(GET => "http://localhost/hello").to-p6w;
 
 my $psgi-app = -> %env {
     (200, [ 'Content-Type' => 'text/plain' ], [ 'Hello World' ]);
