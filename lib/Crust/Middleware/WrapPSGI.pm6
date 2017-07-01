@@ -20,7 +20,9 @@ method CALL-ME(%env) {
 
     # XXX should I check p6w.protocol is set to request-response?
     given $.app()(%env) {
-        when Promise { $_; }
+        when Promise {
+            start { await $_; };
+        }
         default { start { $_ }; }
     }
 }
